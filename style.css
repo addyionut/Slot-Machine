@@ -24,6 +24,7 @@ p {
 	justify-content: center;
 	background-color: lime;
 }
+
 .container {
 	display: grid;
 	grid-template-rows: 50px 50px 50px;
@@ -33,6 +34,7 @@ p {
 	vertical-align: center;
 	width: 1000px;
 }
+
 .col {
 	font-size: 500%;
 }
