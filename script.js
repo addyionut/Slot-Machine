@@ -20,7 +20,7 @@ function playGame() {
 
 function win() {
 	if (boxes[0] === boxes[1] && boxes[1] === boxes[2]) {
-		gameMsg.innerHTML = "You won!";
+		gameMsg.innerHTML = "Congratulations! You won!";
 	}
 	else {
 		gameMsg.innerHTML = "Play again!";
