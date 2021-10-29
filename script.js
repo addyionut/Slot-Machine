@@ -1,24 +1,38 @@
 const gameMsg = document.getElementById('msg');
 gameMsg.innerHTML = "Press the lucky button!";
+var boxes = ["", "", ""];
+var counter = 0;
 
-function randomChars() {
-    var characters = 'ABC';
-    var charsLength = characters.length;
-    return characters.charAt(Math.floor(Math.random() * charsLength));
+function winCases() {
+  if (boxes[2] === "") {
+    gameMsg.innerHTML = "Let's see...wait...";
+  }
+   else if (boxes[0] === boxes[1] && boxes[1] === boxes[2]) {
+    gameMsg.innerHTML = "Congratulations! You won!";
+  }
+  else {
+    gameMsg.innerHTML = "Ooo... Play again!";
+  }
 }
-function count() {
-  var letters = "ABC";
-  var allCounters = document.querySelectorAll(".counter > div");
 
-  allCounters.forEach(function(el) {
-    var duration = 1000 + Array.from(allCounters).indexOf(el) * 1000;        
+function playGame() {
+  gameMsg.innerHTML = "Let's see...wait...";
+  var letters = "AB";
+  var allBoxes = document.querySelectorAll(".counter > div");
+  allBoxes.forEach(function(elm) {
+    var duration = 1000 + Array.from(allBoxes).indexOf(elm) * 1000;        
     var interval = setInterval(function() {
-      el.innerText = letters.charAt(Math.random() * letters.length);
+      var rnd = letters.charAt(Math.random() * letters.length);
+      elm.innerText = rnd;
       duration = duration - 50;
       if (duration <= 0) {
+        boxes[counter] = rnd;
+        ++counter;
+        winCases();
         clearInterval(interval);
-        el.innerText = el.getAttribute("data-final");
-      }
+      } 
     }, 50);
-  });
+    counter = 0;
+  }); 
+  boxes = ["", "", ""];
 }
