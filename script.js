@@ -17,7 +17,7 @@ function winCases() {
 
 function playGame() {
   gameMsg.innerHTML = "Let's see...wait...";
-  let letters = "AB";
+  let letters = "ABC";
   let allBoxes = document.querySelectorAll(".counter > div");
   allBoxes.forEach(function(elm) {
     let duration = 1000 + elm.id * 1000;        
