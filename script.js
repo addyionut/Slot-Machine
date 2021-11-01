@@ -1,7 +1,7 @@
 const gameMsg = document.getElementById('msg');
 gameMsg.innerHTML = "Press the lucky button!";
-var boxes = ["", "", ""];
-var counter = 0;
+let boxes = ["", "", ""];
+let counter = 0;
 
 function winCases() {
   if (boxes[2] === "") {
@@ -17,12 +17,12 @@ function winCases() {
 
 function playGame() {
   gameMsg.innerHTML = "Let's see...wait...";
-  var letters = "AB";
-  var allBoxes = document.querySelectorAll(".counter > div");
+  let letters = "AB";
+  let allBoxes = document.querySelectorAll(".counter > div");
   allBoxes.forEach(function(elm) {
-    var duration = 1000 + elm.id * 1000;        
-    var interval = setInterval(function() {
-      var rnd = letters.charAt(Math.random() * letters.length);
+    let duration = 1000 + elm.id * 1000;        
+    let interval = setInterval(function() {
+      let rnd = letters.charAt(Math.random() * letters.length);
       elm.innerText = rnd;
       duration = duration - 50;
       if (duration <= 0) {
