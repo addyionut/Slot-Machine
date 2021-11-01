@@ -1,28 +1,38 @@
 const gameMsg = document.getElementById('msg');
 gameMsg.innerHTML = "Press the lucky button!";
 var boxes = ["", "", ""];
+var counter = 0;
 
-function randomChars() {
-    var characters = 'ABC';
-    var charsLength = characters.length;
-    return characters.charAt(Math.floor(Math.random() * charsLength));
+function winCases() {
+  if (boxes[2] === "") {
+    gameMsg.innerHTML = "Let's see...wait...";
+  }
+   else if (boxes[0] === boxes[1] && boxes[1] === boxes[2]) {
+    gameMsg.innerHTML = "Congratulations! You won!";
+  }
+  else {
+    gameMsg.innerHTML = "Ooo... Play again!";
+  }
 }
 
 function playGame() {
-	for (let i = 1; i <= 3; ++i) {
-		var rnd = randomChars();
-		var div = document.getElementById(i);
-		div.innerHTML = rnd;
-		boxes[i - 1] = rnd;
-	}
-	win();
-}
-
-function win() {
-	if (boxes[0] === boxes[1] && boxes[1] === boxes[2]) {
-		gameMsg.innerHTML = "Congratulations! You won!";
-	}
-	else {
-		gameMsg.innerHTML = "Play again!";
-	}
+  gameMsg.innerHTML = "Let's see...wait...";
+  var letters = "AB";
+  var allBoxes = document.querySelectorAll(".counter > div");
+  allBoxes.forEach(function(elm) {
+    var duration = 1000 + elm.id * 1000;        
+    var interval = setInterval(function() {
+      var rnd = letters.charAt(Math.random() * letters.length);
+      elm.innerText = rnd;
+      duration = duration - 50;
+      if (duration <= 0) {
+        boxes[counter] = rnd;
+        ++counter;
+        winCases();
+        clearInterval(interval);
+      } 
+    }, 50);
+    counter = 0;
+  }); 
+  boxes = ["", "", ""];
 }
