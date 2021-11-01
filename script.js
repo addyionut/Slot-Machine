@@ -20,7 +20,7 @@ function playGame() {
   var letters = "AB";
   var allBoxes = document.querySelectorAll(".counter > div");
   allBoxes.forEach(function(elm) {
-    var duration = 1000 + Array.from(allBoxes).indexOf(elm) * 1000;        
+    var duration = 1000 + elm.id * 1000;        
     var interval = setInterval(function() {
       var rnd = letters.charAt(Math.random() * letters.length);
       elm.innerText = rnd;
