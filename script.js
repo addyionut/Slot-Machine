@@ -7,7 +7,7 @@ function winCases() {
   if (boxes[2] === "") {
     gameMsg.innerHTML = "Let's see...wait...";
   }
-   else if (boxes[0] === boxes[1] && boxes[1] === boxes[2]) {
+  else if (boxes[0] === boxes[1] && boxes[1] === boxes[2]) {
     gameMsg.innerHTML = "Congratulations! You won!";
   }
   else {
